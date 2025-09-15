@@ -18,6 +18,6 @@ class UserRepositoryTests : BaseIntegrationTests() {
         flushAndClear()
         val userFound = userRepository.findById(user.id!!).get()
         MatcherAssert.assertThat(userFound, Matchers.equalTo(user))
-        //openH2Console()
+        openH2Console()
     }
 }
