@@ -1,5 +1,7 @@
 package com.example.jpah2demo
 
+import com.zaxxer.hikari.pool.HikariProxyConnection
+import org.h2.jdbc.JdbcConnection
 import org.h2.tools.Server
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -19,7 +21,7 @@ abstract class BaseIntegrationTests {
     protected lateinit var entityManager: EntityManager
 
     fun openH2Console() {
-        Server.startWebServer(DataSourceUtils.getConnection(dataSource))
+        Server.startWebServer((DataSourceUtils.getConnection(dataSource) as HikariProxyConnection).unwrap(JdbcConnection::class.java))
     }
 
     fun flushAndClear() {

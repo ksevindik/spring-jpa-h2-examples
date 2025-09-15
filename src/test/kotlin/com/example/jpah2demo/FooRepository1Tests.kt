@@ -47,5 +47,9 @@ class FooRepository1Tests @Autowired constructor(private val fooRepository: FooR
         MatcherAssert.assertThat(pageResult.size,Matchers.equalTo(2))
         MatcherAssert.assertThat(pageResult.totalPages,Matchers.equalTo(1))
         MatcherAssert.assertThat(pageResult.totalElements,Matchers.equalTo(2))
+
+        pageResult.get().forEach {
+            foo->foo.barSet.size
+        }
     }
 }

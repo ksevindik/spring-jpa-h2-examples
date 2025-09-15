@@ -1,17 +1,13 @@
 package com.example.jpah2demo.model
 
-import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.OneToMany
 
 @Entity
-class Bar(@Column(unique = true) var name:String) {
+class Baz(@Column(unique = true) var name:String) {
     @Id
     @GeneratedValue
     var id:Long? = null
@@ -20,7 +16,7 @@ class Bar(@Column(unique = true) var name:String) {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Bar
+        other as Baz
 
         if (name != other.name) return false
 
@@ -31,7 +27,5 @@ class Bar(@Column(unique = true) var name:String) {
         return name.hashCode()
     }
 
-    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinColumn(name="bar_id")
-    var bazSet = mutableSetOf<Baz>()
+
 }

@@ -21,7 +21,7 @@ class Foo(@Column(unique = true) var name:String) {
     @GeneratedValue
     val id:Long? = null
 
-    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinColumn(name="foo_id")
     var barSet = mutableSetOf<Bar>()
 }
